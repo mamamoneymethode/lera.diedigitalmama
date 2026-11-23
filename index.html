@@ -4,14 +4,289 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>lera.diedigitalmama | Mama Money Methode</title>
-<meta name="description" content="Du musst kein digitales Produkt von null erstellen. Die Mama Money Methode: ein fertiger PDF-Guide mit Weiterverkaufsrechten und Schritt-für-Schritt-Anleitung, für 47 € einmalig.">
+<meta name="description" content="Dein erstes digitales Produkt: fertig übernehmen oder mit Claude selbst bauen. Der Schritt-für-Schritt-Guide mit Weiterverkaufsrechten, 10 Claude-Prompts, Pinterest-Modul und 3 Bonus-Modulen. 47 € einmalig.">
 <meta property="og:title" content="Mama Money Methode von lera.diedigitalmama">
-<meta property="og:description" content="Ein fertiges digitales Produkt mit Weiterverkaufsrechten, dazu die Anleitung, wie du es verkaufst. 47 € einmalig.">
-<meta property="og:image" content="assets/seite-1.png">
+<meta property="og:description" content="Fertig übernehmen oder mit Claude selbst bauen. Mit Weiterverkaufsrechten, 10 Claude-Prompts, Pinterest-Modul und 3 Bonus-Modulen. 47 € einmalig.">
+<meta property="og:image" content="assets/mmm-thumbnail.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%80%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+:root {
+  --dunkel: #3E2F4A; --akzent: #B76E8E; --akzent-2: #A0587A; --hell: #FFFBF7; --hell-2: #FBF7FD;
+  --text: #3B3450; --text-2: #786F88; --linie: #EADFEF;
+  --lavendel: #E6E0F6; --rosa: #F6DDE6; --pfirsich: #FBE4D8; --mint: #DDF2EC; --butter: #FBF1CF;
+  --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Jost', system-ui, sans-serif; --hand: 'Caveat', cursive;
+  --regenbogen: linear-gradient(110deg, #D1D3F7 0%, #E4FEFD 26%, #F1DEC8 52%, #FEE2D5 76%, #F3CFDC 100%);
+  --regenbogen-hell: linear-gradient(110deg, #ECEDFD 0%, #F2FFFE 26%, #FAF0E6 52%, #FFF1EB 76%, #FBE8EF 100%);
+  --schatten: 0 30px 60px -20px rgba(62,47,74,.28), 0 8px 18px -8px rgba(62,47,74,.16);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--hell); color: var(--text); font: 300 18px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--akzent); }
+.wrap { width: min(1160px, 100% - 32px); margin-inline: auto; }
+.schmal { width: min(780px, 100% - 32px); margin-inline: auto; }
+section { padding: 104px 0; position: relative; }
+.mitte { text-align: center; }
+h1, h2, h3 { font-family: var(--serif); color: var(--dunkel); font-weight: 700; line-height: 1.04; letter-spacing: -.01em; text-wrap: balance; }
+h1 { font-size: clamp(42px, 5vw, 70px); }
+h2 { font-size: clamp(36px, 4.8vw, 60px); }
+h3 { font-size: clamp(25px, 2.6vw, 31px); }
+h1 em, h2 em, h3 em { font-style: italic; font-weight: 600; color: var(--akzent); }
+p, li { text-wrap: pretty; }
+b, strong { font-weight: 500; color: var(--dunkel); }
+.kicker { display: block; font: 500 13px/1.3 var(--sans); letter-spacing: .3em; text-transform: uppercase; color: var(--akzent); margin-bottom: 18px; text-wrap: balance; }
+.hand { font-family: var(--hand); font-weight: 600; color: var(--akzent); }
+.lead { font-size: 20px; }
+.nw { white-space: nowrap; }
+
+/* Laufband */
+.laufband { background: var(--regenbogen); color: var(--dunkel); overflow: hidden; white-space: nowrap; font: 500 12.5px/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; padding: 12px 0; }
+.laufband div { display: inline-flex; gap: 42px; padding-right: 42px; animation: lauf 38s linear infinite; }
+.laufband span::after { content: "✦"; margin-left: 42px; color: var(--akzent); }
+@keyframes lauf { to { transform: translateX(-50%); } }
+
+/* Kopf */
+.kopf { position: sticky; top: 0; z-index: 30; background: rgba(255,251,247,.86); backdrop-filter: blur(12px); border-bottom: 1px solid var(--linie); }
+.kopf .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.marke { font: 500 17px/1 var(--sans); letter-spacing: .04em; color: var(--dunkel); text-decoration: none; }
+.marke span { color: var(--akzent); }
+
+/* Knöpfe */
+.knopf { position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--akzent); color: #fff; text-decoration: none; font: 500 15px/1.2 var(--sans); letter-spacing: .13em; text-transform: uppercase; padding: 22px 40px; border-radius: 999px; box-shadow: 0 16px 34px -14px rgba(183,110,142,.75); transition: transform .25s, box-shadow .25s, background .25s; text-align: center; border: 0; cursor: pointer; }
+.knopf::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.45) 50%, transparent 70%); transform: translateX(-120%); animation: glanz 4.5s ease-in-out infinite; }
+@keyframes glanz { 0%, 60% { transform: translateX(-120%); } 85%, 100% { transform: translateX(120%); } }
+.knopf:hover { transform: translateY(-3px); background: var(--akzent-2); box-shadow: 0 22px 40px -14px rgba(183,110,142,.85); }
+.knopf.klein { padding: 12px 22px; font-size: 12.5px; box-shadow: none; }
+.knopf.klein::after { display: none; }
+.vertrauen { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 20px; font-size: 14.5px; color: var(--text-2); }
+.vertrauen span::before { content: "✓"; color: var(--akzent); font-weight: 600; margin-right: 7px; }
+
+/* Held */
+.held { padding: 64px 0 96px; background: radial-gradient(520px 520px at 88% 18%, rgba(255,255,255,.55) 0%, transparent 70%), var(--regenbogen); overflow: hidden; }
+.held::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 90px; background: linear-gradient(180deg, transparent, var(--hell)); pointer-events: none; }
+.held .wrap { position: relative; z-index: 1; }
+.held .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; }
+.held h1 s { text-decoration: none; position: relative; color: #C9B3C2; font-style: normal; }
+.held h1 s::after { content: ""; position: absolute; left: -4px; right: -4px; top: 54%; height: 4px; background: var(--akzent); border-radius: 4px; transform: scaleX(0); transform-origin: left; animation: streich .7s .6s ease forwards; }
+@keyframes streich { to { transform: scaleX(1); } }
+.held .unter { font-size: clamp(19px, 1.6vw, 21px); margin-top: 26px; max-width: 560px; }
+.held .knopf { margin-top: 34px; }
+.held-bild { position: relative; height: 620px; }
+.held-bild .seite { position: absolute; width: 330px; border-radius: 10px; box-shadow: var(--schatten); background: #fff; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.held-bild .s1 { left: 4%; top: 70px; transform: rotate(-9deg); }
+.held-bild .s2 { right: 0; top: 40px; transform: rotate(8deg); }
+.held-bild .s3 { left: 50%; top: 0; width: 370px; transform: translateX(-50%); z-index: 2; }
+.held-bild:hover .s1 { transform: rotate(-13deg) translateX(-24px); }
+.held-bild:hover .s2 { transform: rotate(12deg) translateX(24px); }
+.sticker { position: absolute; z-index: 3; background: #fff; border: 1.5px solid var(--dunkel); border-radius: 999px; padding: 10px 22px; font: 600 25px/1.1 var(--hand); color: var(--akzent); box-shadow: 0 10px 24px -10px rgba(62,47,74,.35); white-space: nowrap; animation: schweben 5s ease-in-out infinite; }
+.sticker.a { left: -10px; top: 410px; transform: rotate(-5deg); }
+.sticker.b { right: -6px; top: 520px; transform: rotate(4deg); animation-delay: -2.5s; }
+.siegel { position: absolute; z-index: 4; right: 4%; top: -6px; width: 150px; height: 150px; border-radius: 50%; background: var(--dunkel); color: #fff; border: 5px solid #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 18px 36px -12px rgba(62,47,74,.55); transform: rotate(10deg); animation: dreh 14s linear infinite; }
+.siegel small { font: 500 11px/1 var(--sans); letter-spacing: .3em; color: #F6C9DA; }
+.siegel b { color: #fff; font: italic 600 46px/1 var(--serif); }
+.siegel span { font: 500 14px/1.15 var(--sans); }
+@keyframes schweben { 50% { translate: 0 -8px; } }
+@keyframes dreh { 0%, 100% { rotate: 0deg; } 50% { rotate: -8deg; } }
+
+/* Zahlen */
+.zahlen { background: var(--regenbogen); color: var(--dunkel); padding: 56px 0; }
+.zahlen .wrap { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; text-align: center; }
+.zahlen b { display: block; color: var(--dunkel); font: italic 600 clamp(44px, 5vw, 64px)/1 var(--serif); }
+.zahlen span { display: block; margin-top: 10px; font-size: 14px; line-height: 1.45; color: var(--text); }
+.zahlen .wrap > div { background: rgba(255,255,255,.55); border-radius: 22px; padding: 24px 12px; backdrop-filter: blur(4px); }
+
+/* Wunsch */
+.wunsch-liste { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 54px; }
+.karte { background: #fff; border: 1px solid var(--linie); border-radius: 24px; padding: 28px 26px; box-shadow: 0 12px 30px -22px rgba(62,47,74,.35); transition: transform .3s, box-shadow .3s; }
+.karte:hover { transform: translateY(-6px); box-shadow: var(--schatten); }
+.wunsch-liste .karte:nth-child(1) { background: linear-gradient(160deg, #fff 55%, var(--lavendel)); }
+.wunsch-liste .karte:nth-child(2) { background: linear-gradient(160deg, #fff 55%, var(--mint)); }
+.wunsch-liste .karte:nth-child(3) { background: linear-gradient(160deg, #fff 55%, var(--pfirsich)); }
+.wunsch-liste .karte:nth-child(4) { background: linear-gradient(160deg, #fff 55%, var(--rosa)); }
+.karte .hand { font-size: 27px; display: block; margin-bottom: 8px; }
+.karte p { font-size: 16.5px; }
+.zitat-gross { margin: 56px auto 0; max-width: 760px; text-align: center; font: italic 600 clamp(27px, 3vw, 36px)/1.25 var(--serif); color: var(--dunkel); text-wrap: balance; }
+.zitat-gross em { color: var(--akzent); }
+
+/* Wege-Umschalter */
+.wege { background: var(--regenbogen-hell); }
+.schalter { display: inline-flex; background: #fff; border: 1px solid var(--linie); border-radius: 999px; padding: 6px; margin-top: 34px; box-shadow: 0 10px 26px -18px rgba(62,47,74,.4); }
+.schalter button { border: 0; background: transparent; font: 500 15px/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--text-2); padding: 16px 28px; border-radius: 999px; cursor: pointer; transition: background .3s, color .3s; }
+.schalter button[aria-selected="true"] { background: var(--dunkel); color: #fff; }
+.weg-feld { display: none; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 52px; text-align: left; }
+.weg-feld.aktiv { display: grid; animation: auf .5s ease; }
+@keyframes auf { from { opacity: 0; transform: translateY(14px); } }
+.weg-feld img { width: 100%; max-width: 380px; justify-self: center; border-radius: 12px; box-shadow: var(--schatten); transform: rotate(-2deg); }
+.weg-feld h3 { margin-bottom: 14px; }
+.schritte { list-style: none; counter-reset: s; margin-top: 22px; display: grid; gap: 14px; }
+.schritte li { counter-increment: s; display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; font-size: 17px; }
+.schritte li::before { content: counter(s); width: 40px; height: 40px; border-radius: 50%; background: var(--rosa); color: var(--dunkel); font: 600 17px/40px var(--sans); text-align: center; }
+.weg-feld.b .schritte li::before { background: var(--lavendel); }
+.ziel { margin-top: 26px; padding: 18px 22px; border-radius: 16px; background: var(--butter); font-size: 16.5px; }
+
+/* Prompt-Demo */
+.demo .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
+.terminal { background: var(--dunkel); border-radius: 22px; box-shadow: var(--schatten); overflow: hidden; }
+.terminal { border-top: 6px solid transparent; background: linear-gradient(var(--dunkel), var(--dunkel)) padding-box, var(--regenbogen) border-box; }
+.terminal .leiste { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,.12); font: 500 12px/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; color: #F6C9DA; }
+.terminal .leiste i { font: 600 21px var(--hand); letter-spacing: 0; text-transform: none; color: #fff; font-style: normal; }
+.terminal pre { margin: 0; padding: 24px 24px 30px; min-height: 420px; font: 400 14.5px/1.62 var(--sans); color: #F4EEF7; white-space: pre-wrap; }
+.terminal pre .cursor { display: inline-block; width: 9px; height: 18px; background: #F6C9DA; vertical-align: -3px; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.hinweis-klein { font-size: 14px; color: var(--text-2); margin-top: 14px; }
+.punkte { list-style: none; margin-top: 22px; display: grid; gap: 12px; }
+.punkte li { padding-left: 32px; position: relative; font-size: 17px; }
+.punkte li::before { content: "✦"; position: absolute; left: 4px; top: 0; color: var(--akzent); }
+
+/* Blick hinein */
+.blick { background: linear-gradient(180deg, var(--hell) 0%, #F3F0FD 35%, #EFFAF7 70%, #FDF1EA 100%); }
+.reiter { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 34px; }
+.reiter button { border: 1px solid var(--linie); background: #fff; color: var(--dunkel); font: 500 14px/1 var(--sans); letter-spacing: .06em; padding: 13px 20px; border-radius: 999px; cursor: pointer; transition: all .25s; }
+.reiter button:hover { border-color: var(--akzent); }
+.reiter button[aria-selected="true"] { background: var(--akzent); border-color: var(--akzent); color: #fff; box-shadow: 0 10px 22px -12px rgba(183,110,142,.8); }
+.buehne { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-top: 50px; }
+.buehne .bild { position: relative; height: 560px; }
+.buehne .bild img { position: absolute; width: 380px; left: 50%; top: 0; border-radius: 10px; box-shadow: var(--schatten); transition: opacity .45s, transform .6s cubic-bezier(.2,.8,.2,1); }
+.buehne .bild img.hinten { transform: translateX(-30%) rotate(7deg) scale(.92); opacity: .55; }
+.buehne .bild img.vorn { transform: translateX(-62%) rotate(-3deg); z-index: 2; }
+.buehne .text { transition: opacity .3s; }
+.buehne .text.weg { opacity: 0; }
+.buehne .nr { font: italic 600 64px/1 var(--serif); color: var(--rosa); -webkit-text-stroke: 1px var(--akzent); }
+.buehne ul { list-style: none; margin-top: 20px; display: grid; gap: 11px; }
+.buehne li { padding-left: 30px; position: relative; font-size: 17px; }
+.buehne li::before { content: "✓"; position: absolute; left: 2px; color: var(--akzent); font-weight: 600; }
+
+/* Stapel */
+.stapel { display: grid; gap: 14px; margin-top: 50px; text-align: left; }
+.posten { display: grid; grid-template-columns: 58px 1fr auto; gap: 18px; align-items: center; background: #fff; border: 1px solid var(--linie); border-radius: 20px; padding: 18px 22px; box-shadow: 0 10px 24px -20px rgba(62,47,74,.4); }
+.posten .ic { width: 58px; height: 58px; border-radius: 16px; display: grid; place-items: center; font: italic 600 26px/1 var(--serif); color: var(--dunkel); }
+.posten b { display: block; font-size: 18px; }
+.posten span { display: block; font-size: 15.5px; color: var(--text-2); line-height: 1.45; }
+.posten .tag { font: 600 11px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: var(--akzent); background: var(--rosa); padding: 8px 12px; border-radius: 999px; white-space: nowrap; }
+.posten.top { background: linear-gradient(100deg, #fff 55%, #FDF1F5 100%) padding-box, linear-gradient(120deg, #C9CCF5, #BDEDE4, #F1D3AE, #F9C7B3, #EDB3C9) border-box; border: 2px solid transparent; }
+.posten.top .tag { background: var(--dunkel); color: #fff; }
+.summe { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: baseline; justify-content: center; font: 600 clamp(26px, 3vw, 34px)/1.2 var(--serif); color: var(--dunkel); }
+.summe em { color: var(--akzent); font-size: 1.5em; }
+
+/* Quiz */
+.quiz { background: var(--regenbogen); color: var(--text); }
+.quiz h2, .quiz h3 { color: var(--dunkel); }
+.quiz h2 em { color: var(--akzent); }
+.quiz .kicker { color: var(--akzent); }
+.quiz-karte { max-width: 720px; margin: 46px auto 0; background: rgba(255,255,255,.6); border: 1px solid rgba(255,255,255,.9); box-shadow: var(--schatten); backdrop-filter: blur(8px); border-radius: 28px; padding: 38px 34px; text-align: center; }
+.fortschritt { height: 5px; background: var(--linie); border-radius: 9px; overflow: hidden; margin-bottom: 30px; }
+.fortschritt i { display: block; height: 100%; width: 0; background: var(--akzent); transition: width .45s; }
+.frage { display: none; }
+.frage.aktiv { display: block; animation: auf .45s ease; }
+.frage h3 { font-size: clamp(25px, 2.8vw, 32px); margin-bottom: 26px; }
+.antworten { display: grid; gap: 12px; }
+.antworten button { background: #fff; color: var(--dunkel); border: 1px solid var(--linie); border-radius: 16px; padding: 18px 22px; font: 400 17px/1.4 var(--sans); cursor: pointer; text-align: left; transition: transform .2s, background .2s; }
+.antworten button:hover { transform: translateX(6px); background: var(--rosa); }
+.ergebnis .gross { font: italic 600 clamp(40px, 5vw, 58px)/1 var(--serif); color: var(--akzent); display: block; margin: 6px 0 16px; }
+.ergebnis p { max-width: 560px; margin: 0 auto 26px; }
+.nochmal { background: none; border: 0; color: var(--akzent); text-decoration: underline; cursor: pointer; font: 400 15px var(--sans); margin-top: 18px; }
+
+/* Über mich */
+.ueber .wrap { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: center; }
+.foto { position: relative; }
+.foto img { border-radius: 200px 200px 24px 24px; box-shadow: var(--schatten); aspect-ratio: 3 / 4; object-fit: cover; }
+.foto .zettel { position: absolute; right: -20px; bottom: 34px; background: #fff; padding: 14px 20px; border-radius: 16px; box-shadow: var(--schatten); font-size: 15px; transform: rotate(3deg); }
+.foto .zettel .hand { display: block; font-size: 26px; }
+.ueber p + p { margin-top: 14px; }
+
+/* Für wen */
+.fuer { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 46px; text-align: left; }
+.fuer > div { background: #fff; border: 1px solid var(--linie); border-radius: 24px; padding: 32px; }
+.fuer ul { list-style: none; margin-top: 16px; display: grid; gap: 12px; }
+.fuer li { padding-left: 32px; position: relative; font-size: 17px; }
+.fuer .ja li::before { content: "✓"; position: absolute; left: 4px; color: var(--akzent); font-weight: 600; }
+.fuer .nein li::before { content: "✕"; position: absolute; left: 4px; color: #B9A9BF; }
+
+/* Preis */
+.preis { background: var(--regenbogen); }
+.preis-karte { position: relative; max-width: 540px; margin: 46px auto 0; background: linear-gradient(#fff, #fff) padding-box, linear-gradient(120deg, #C9CCF5, #BDEDE4, #F1D3AE, #F9C7B3, #EDB3C9) border-box; border: 3px solid transparent; border-radius: 32px; padding: 48px 36px 40px; box-shadow: var(--schatten); text-align: center; }
+.preis-karte .band-oben { position: absolute; top: -17px; left: 50%; transform: translateX(-50%); background: var(--dunkel); color: #fff; font: 500 12px/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; padding: 11px 20px; border-radius: 999px; white-space: nowrap; }
+.betrag { font: 700 104px/1 var(--serif); color: var(--dunkel); }
+.einmal { color: var(--text-2); margin-bottom: 26px; }
+.preis-karte ul { list-style: none; text-align: left; display: grid; gap: 10px; margin: 0 0 30px; }
+.preis-karte li { padding-left: 30px; position: relative; font-size: 16.5px; }
+.preis-karte li::before { content: "✓"; position: absolute; left: 4px; color: var(--akzent); font-weight: 600; }
+.preis-karte .klein-text { font-size: 14px; color: var(--text-2); margin-top: 16px; }
+
+/* Fragen */
+details { border-bottom: 1px solid var(--linie); padding: 22px 0; }
+summary { cursor: pointer; list-style: none; font: 600 clamp(21px, 2.1vw, 25px)/1.25 var(--serif); color: var(--dunkel); display: flex; justify-content: space-between; gap: 18px; text-wrap: balance; }
+summary::after { content: "+"; font: 300 28px/1 var(--sans); color: var(--akzent); transition: transform .3s; }
+details[open] summary::after { transform: rotate(45deg); }
+details p { margin-top: 12px; font-size: 17px; }
+
+/* Schluss & Fuß */
+.schluss { text-align: center; padding-top: 40px; }
+.schluss .hand { font-size: 34px; display: block; margin-bottom: 8px; }
+.fuss { background: var(--regenbogen-hell); padding: 50px 0 120px; font-size: 13.5px; color: var(--text-2); }
+.fuss p + p { margin-top: 12px; }
+.fuss nav { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 22px; }
+.fuss nav a { color: var(--dunkel); }
+.mobil-knopf { display: none; }
+
+/* Auftauchen */
+.zeigen { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
+.zeigen.da { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .zeigen { opacity: 1; transform: none; }
+}
+
+/* Handy */
+@media (max-width: 980px) {
+  section { padding: 76px 0; }
+  .held .wrap, .demo .wrap, .ueber .wrap, .weg-feld.aktiv, .buehne { grid-template-columns: 1fr; }
+  .held-bild { height: 470px; margin-top: 10px; }
+  .held-bild .seite { width: 230px; }
+  .held-bild .s3 { width: 262px; }
+  .held-bild .s1 { left: 0; top: 60px; }
+  .held-bild .s2 { right: 0; top: 50px; }
+  .sticker { font-size: 21px; padding: 8px 16px; }
+  .sticker.a { left: 0; top: 330px; }
+  .sticker.b { right: 0; top: 400px; }
+  .siegel { width: 112px; height: 112px; right: 0; top: -10px; }
+  .siegel b { font-size: 34px; } .siegel span { font-size: 12px; } .siegel small { font-size: 9px; }
+  .zahlen .wrap { grid-template-columns: repeat(2, 1fr); }
+  .zahlen .wrap > div:last-child { grid-column: 1 / -1; }
+  .wunsch-liste { grid-template-columns: 1fr 1fr; }
+  .buehne .bild { height: 430px; order: -1; }
+  .buehne .bild img { width: 270px; }
+  .foto { max-width: 380px; margin: 0 auto; }
+  .foto .zettel { right: 0; }
+  .fuer { grid-template-columns: 1fr; }
+  .terminal pre { min-height: 380px; font-size: 13.5px; }
+}
+@media (max-width: 600px) {
+  body { font-size: 17px; }
+  .lead { font-size: 18px; }
+  .knopf { padding: 19px 26px; font-size: 14px; width: 100%; }
+  .kopf .knopf { width: auto; }
+  .wunsch-liste { grid-template-columns: 1fr; }
+  .schalter button { padding: 14px 18px; font-size: 13px; }
+  .posten { grid-template-columns: 48px 1fr; padding: 16px; }
+  .posten .ic { width: 48px; height: 48px; font-size: 22px; }
+  .posten .tag { grid-column: 2; justify-self: start; }
+  .quiz-karte { padding: 28px 20px; }
+  .betrag { font-size: 84px; }
+  .mobil-knopf { display: block; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 40; transform: translateY(140%); transition: transform .35s; }
+  .mobil-knopf.da { transform: none; }
+  .mobil-knopf .knopf { box-shadow: 0 14px 30px -10px rgba(62,47,74,.5); }
+}
+</style>
 </head>
 <body>
+
+<div class="laufband" aria-hidden="true"><div>
+  <span>Weg A &amp; Weg B</span><span>10 Claude-Prompts</span><span>Eigene Verkaufsseite</span><span>Pinterest-Modul</span><span>3 Bonus-Module</span><span>Weiterverkaufsrechte</span><span>47 € einmalig</span>
+  <span>Weg A &amp; Weg B</span><span>10 Claude-Prompts</span><span>Eigene Verkaufsseite</span><span>Pinterest-Modul</span><span>3 Bonus-Module</span><span>Weiterverkaufsrechte</span><span>47 € einmalig</span>
+</div></div>
 
 <header class="kopf">
   <div class="wrap">
@@ -22,214 +297,267 @@
 
 <main>
 
-<!-- 1 Held -->
+<!-- Held -->
 <section class="held">
   <div class="wrap">
     <div>
-      <p class="kicker">Mama Money Methode</p>
-      <h1>Du musst kein digitales Produkt von null erstellen, um <em>online zu&nbsp;starten.</em></h1>
-      <span class="hand unterstrich">Ich habe es schon für dich gemacht.</span>
-      <p class="lead">Für einmalig <b>47&nbsp;€</b> bekommst du meinen fertigen PDF-Guide mit Weiterverkaufsrechten. Dazu die Anleitung, wie du ihn zu deinem eigenen machst, deinen Shop einrichtest und ihn verkaufst.</p>
-      <p class="lead" style="margin-top:14px">Nebenbei, mit Kindern, ohne Vorerfahrung.</p>
+      <span class="kicker">Mama Money Methode · der Schritt-für-Schritt-Guide</span>
+      <h1>Dein erstes digitales Produkt, <s>von null</s> <em>fertig übernommen oder mit Claude gebaut.</em></h1>
+      <p class="unter">Du nimmst meinen fertigen Guide mit Weiterverkaufsrechten <b>oder</b> baust mit 10 fertigen Prompts dein ganz eigenes Produkt. Danach zeige ich dir Schritt für Schritt, wie du es verkaufst: über deine eigene Verkaufsseite, Instagram und Pinterest. Nebenbei, mit den Kindern mittendrin.</p>
       <a class="knopf" href="https://copecart.com/products/60befb55/checkout">Jetzt für 47&nbsp;€ starten &rarr;</a>
-      <p class="knopf-info">Sofort als Download. Einmal zahlen, kein Abo.</p>
+      <div class="vertrauen"><span>Sofort als Download</span><span>Einmal zahlen, kein Abo</span><span>Ohne Vorerfahrung</span></div>
     </div>
-    <div class="foto-held">
-      <img src="assets/lera.jpg" alt="Lera, Mama von zwei Kindern, sitzt im Abendlicht auf einer Dachterrasse" width="720" height="1280">
-      <div class="zettel"><span class="hand">Hey, ich bin Lera</span>Mama² → Business mit&nbsp;Kindern</div>
+    <div class="held-bild" aria-label="Echte Seiten aus dem Guide">
+      <img class="seite s1" src="assets/mmm-prompt.webp" alt="Innenseite: Prompt 1, deine Produktidee" width="909" height="1287">
+      <img class="seite s2" src="assets/mmm-pinterest.webp" alt="Innenseite: Warum Pinterest" width="909" height="1287">
+      <img class="seite s3" src="assets/mmm-cover.webp" alt="Titelseite der Mama Money Methode" width="909" height="1287">
+      <div class="siegel"><small>ON TOP</small><b>+3</b><span>Bonus-<br>Module</span></div>
+      <span class="sticker a">fertig nutzen oder selbst bauen ♡</span>
+      <span class="sticker b">mit Weiterverkaufsrechten ✨</span>
     </div>
   </div>
 </section>
 
-<!-- 2 Zahlenband -->
-<section class="band" aria-label="Auf einen Blick">
+<!-- Zahlen -->
+<section class="zahlen" aria-label="Auf einen Blick">
   <div class="wrap">
-    <div class="zahl"><b>35</b><span>Seiten fertiger Guide, den du anpassen und als dein Produkt verkaufen darfst</span></div>
-    <div class="zahl"><b>100&nbsp;%</b><span>deines Gewinns bleiben bei dir, keine Provision an mich</span></div>
-    <div class="zahl"><b>10</b><span>Schritte in klarer Reihenfolge, vom Start bis zum Launch</span></div>
-    <div class="zahl"><b>1,7&nbsp;Mio.</b><span>Aufrufe auf meinem Instagram in 30&nbsp;Tagen, ohne bezahlte Werbung</span></div>
+    <div><b data-zahl="2">0</b><span>Wege zu deinem eigenen Produkt</span></div>
+    <div><b data-zahl="10">0</b><span>professionelle Prompts für Claude, kostenlos nutzbar</span></div>
+    <div><b data-zahl="3">0</b><span>Bonus-Module on top</span></div>
+    <div><b data-zahl="100" data-nach="&nbsp;%">0</b><span>deines Gewinns bleiben bei dir</span></div>
+    <div><b data-zahl="1.7" data-nach="&nbsp;Mio." data-komma="1">0</b><span>Aufrufe auf meinem Instagram in 30&nbsp;Tagen, ohne Werbung</span></div>
   </div>
 </section>
 
-<!-- 3 Wunschzustand -->
-<section class="wunsch">
-  <div class="schmal mitte">
-    <p class="kicker">Stell dir vor</p>
+<!-- Wunsch -->
+<section>
+  <div class="schmal mitte zeigen">
+    <span class="kicker">Stell dir vor</span>
     <h2>Wofür du dir das <em>eigentlich</em> aufbaust.</h2>
     <p class="lead" style="margin-top:20px">Nicht für schnelles Geld. Sondern für die kleinen Momente, in denen du nicht mehr fragen musst, ob du dir etwas leisten darfst.</p>
   </div>
   <div class="wrap">
     <div class="wunsch-liste">
-      <div class="wunsch-karte"><span class="hand">Am Kindergartentor</span><p>Du bist die Erste, die wartet. Nicht hetzen, nicht am Telefon, einfach da.</p></div>
-      <div class="wunsch-karte"><span class="hand">Beim Einkaufen</span><p>Du sagst Ja zu dem, was dein Kind sich wünscht, ohne vorher im Kopf nachzurechnen.</p></div>
-      <div class="wunsch-karte"><span class="hand">Im Mittagsschlaf</span><p>Babyphone neben dir, Laptop auf dem Schoß, und du weißt genau, was dein nächster Schritt ist.</p></div>
-      <div class="wunsch-karte"><span class="hand">Wenn ein Kind krank ist</span><p>Du bleibst zu Hause, ohne schlechtes Gewissen und ohne jemanden um Erlaubnis zu bitten.</p></div>
+      <div class="karte zeigen"><span class="hand">Am Kindergartentor</span><p>Du bist die Erste, die wartet. Nicht hetzen, nicht am Telefon, einfach da.</p></div>
+      <div class="karte zeigen"><span class="hand">Beim Einkaufen</span><p>Du sagst Ja zu dem, was dein Kind sich wünscht, ohne vorher im Kopf nachzurechnen.</p></div>
+      <div class="karte zeigen"><span class="hand">Abends auf dem Sofa</span><p>Die Kinder schlafen, der Laptop ist auf, und du weißt genau, was dein nächster Schritt ist.</p></div>
+      <div class="karte zeigen"><span class="hand">Wenn ein Kind krank ist</span><p>Du bleibst zu Hause, ohne schlechtes Gewissen und ohne jemanden um Erlaubnis zu bitten.</p></div>
     </div>
-    <p class="wunsch-schluss mitte">Ich baue mir kein Business auf, um reich zu werden. Ich baue es, damit ich <em>frei entscheiden</em> kann.</p>
+    <p class="zitat-gross zeigen">Ich baue mir kein Business auf, um reich zu werden. Ich baue es, damit ich <em>frei entscheiden</em> kann.</p>
   </div>
 </section>
 
-<!-- 4 Zwei Säulen -->
-<section>
-  <div class="schmal mitte">
-    <p class="kicker">So funktioniert es</p>
-    <h2>Ein fertiges Produkt. <em>Eine klare Reihenfolge.</em></h2>
-    <p class="lead" style="margin-top:20px">Du überspringst den schwersten Teil, nämlich herauszufinden, was du überhaupt verkaufen sollst. Und du bekommst den Weg, wie du es verkaufst.</p>
+<!-- Zwei Wege -->
+<section class="wege" id="wege">
+  <div class="schmal mitte zeigen">
+    <span class="kicker">So funktioniert es</span>
+    <h2>Zwei Wege. <em>Ein Ziel:</em> dein eigenes Produkt.</h2>
+    <p class="lead" style="margin-top:20px">Du entscheidest, wie du startest. Tipp einfach auf deinen Weg.</p>
+    <div class="schalter" role="tablist">
+      <button role="tab" aria-selected="true" data-weg="a">Weg A · fertig nutzen</button>
+      <button role="tab" aria-selected="false" data-weg="b">Weg B · selbst bauen</button>
+    </div>
   </div>
   <div class="wrap">
-    <div class="saeulen">
-      <div class="saeule stark">
-        <span class="marke-klein">Teil 1</span>
-        <h3>Du startest mit meinem Produkt.</h3>
-        <p>Der Guide ist fertig geschrieben und gestaltet. Du machst ihn zu deinem eigenen:</p>
-        <ul class="haken">
-          <li>Namen und Cover ändern</li>
-          <li>Inhalte anpassen und deine persönliche Note einbauen</li>
-          <li>Zu deinem eigenen Preis verkaufen</li>
-          <li>100&nbsp;% deines Gewinns behalten</li>
-          <li>In eigene Angebote einbinden oder verschenken</li>
-        </ul>
-      </div>
-      <div class="saeule">
-        <span class="marke-klein">Teil 2</span>
-        <h3>Du lernst, wie du es verkaufst.</h3>
-        <p>Schritt für Schritt, ohne Fachchinesisch, mit Vorlagen zum Übernehmen:</p>
-        <ul class="haken">
-          <li>Shop, Instagram und Link-in-Bio-Seite einrichten</li>
-          <li>Das Rechtliche: Gewerbe, Kleinunternehmerregelung, AGB-Bausteine</li>
-          <li>7&nbsp;Hook-Vorlagen, eine Verkaufs-Caption und 6&nbsp;Story-Vorlagen</li>
-          <li>Freebie und E&#8209;Mail-Tool in 7&nbsp;Schritten, mit <span class="nw">5&nbsp;E&#8209;Mail-Vorlagen</span></li>
-          <li>Ein ehrlicher Launch-Plan ohne künstlichen Druck</li>
-        </ul>
+    <div class="weg-feld a aktiv" data-feld="a">
+      <img src="assets/mmm-zweiwege.webp" alt="Seite: Zwei Wege, ein Ziel" loading="lazy" width="909" height="1287">
+      <div>
+        <span class="kicker">Weg A</span>
+        <h3>Du nimmst mein fertiges Produkt und machst es <em>zu deinem.</em></h3>
+        <p>Die ganze Arbeit, ein Produkt zu entwickeln, ist dir abgenommen. Du kannst dich sofort aufs Verkaufen konzentrieren.</p>
+        <ol class="schritte">
+          <li>Den Guide in Canva öffnen, Schritt für Schritt erklärt</li>
+          <li>Deinen Namen, deine Farben und dein Cover einsetzen</li>
+          <li>Deine persönliche Note und deine Geschichte ergänzen</li>
+          <li>Zu deinem Preis verkaufen und 100&nbsp;% behalten</li>
+        </ol>
+        <p class="ziel"><b>Ideal, wenn</b> du schnell starten willst und dir das Thema „online starten als Mama“ liegt.</p>
       </div>
     </div>
-    <p class="hinweis-zeile mitte">Beides steckt im selben Guide für 47&nbsp;€.</p>
+    <div class="weg-feld b" data-feld="b">
+      <img src="assets/mmm-prompt.webp" alt="Seite: Prompt 1, deine Produktidee" loading="lazy" width="909" height="1287">
+      <div>
+        <span class="kicker">Weg B</span>
+        <h3>Du baust mit Claude dein <em>ganz eigenes</em> Produkt.</h3>
+        <p>Auch wenn du heute noch keine Idee hast. Fertige Prompts führen dich von der ersten Idee bis zum fertigen PDF, und die kostenlose Version von Claude reicht dafür.</p>
+        <ol class="schritte">
+          <li>Claude findet mit dir 10 Produktideen, die zu dir passen</li>
+          <li>Du prüfst die Idee und findest deinen Preis</li>
+          <li>Claude schreibt mit dir Gliederung und Inhalt, Kapitel für Kapitel</li>
+          <li>Du bringst alles in deine Stimme und gestaltest es in Canva</li>
+        </ol>
+        <p class="ziel"><b>Ideal, wenn</b> du ein eigenes Thema hast, über das du gern sprichst.</p>
+      </div>
+    </div>
+    <p class="mitte zeigen" style="margin-top:46px;font-size:17px">Egal, welcher Weg: <b>Danach geht es für beide gleich weiter</b>, mit Shop, Verkaufsseite, Instagram, Pinterest, E-Mails und Launch.</p>
   </div>
 </section>
 
-<!-- 5 Inhalt -->
-<section style="background:var(--hell-2)">
+<!-- Prompt-Demo -->
+<section class="demo">
+  <div class="wrap">
+    <div class="zeigen">
+      <span class="kicker">Sieh selbst</span>
+      <h2>So professionell sind <em>deine Prompts.</em></h2>
+      <p class="lead" style="margin-top:20px">Keine Zwei-Zeiler, die irgendwas ausspucken. Jeder Prompt gibt Claude eine klare Rolle, stellt dir die richtigen Fragen und liefert dir ein Ergebnis, mit dem du sofort weiterarbeiten kannst.</p>
+      <ul class="punkte">
+        <li>10 ausgearbeitete Prompts, von der Idee bis zum Freebie</li>
+        <li>Einfach kopieren, einfügen und deine Antworten ergänzen</li>
+        <li>Funktioniert mit der <b>kostenlosen</b> Version von Claude</li>
+      </ul>
+      <p class="hinweis-klein">Rechts siehst du den echten Prompt 1 aus dem Guide.</p>
+    </div>
+    <div class="terminal zeigen">
+      <div class="leiste"><span>In Claude einfügen · Prompt 1</span><i>Produktidee finden</i></div>
+      <pre id="tipp" aria-label="Prompt 1 aus dem Guide"></pre>
+    </div>
+  </div>
+</section>
+
+<!-- Blick hinein -->
+<section class="blick" id="inhalt">
+  <div class="schmal mitte zeigen">
+    <span class="kicker">Ein Blick hinein</span>
+    <h2>Echte Seiten. <em>Alles bis ins Detail erklärt.</em></h2>
+    <p class="lead" style="margin-top:20px">Tipp dich durch die Teile des Guides und sieh dir an, was dich erwartet.</p>
+  </div>
+  <div class="wrap">
+    <div class="reiter" role="tablist" id="reiter"></div>
+    <div class="buehne">
+      <div class="bild"><img class="hinten" id="bild-hinten" alt="" loading="lazy" width="909" height="1287"><img class="vorn" id="bild-vorn" alt="" loading="lazy" width="909" height="1287"></div>
+      <div class="text" id="buehne-text"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Stapel -->
+<section>
   <div class="schmal mitte">
-    <p class="kicker">Ein Blick hinein</p>
-    <h2>Genau das bekommst du <em>für&nbsp;47&nbsp;€.</em></h2>
-    <p class="lead" style="margin-top:20px">Kein Kurs, den du wochenlang anschaust. Ein klarer Guide, der dir sagt, was du wann tust, und dir ein fertiges Produkt in die Hand gibt.</p>
-    <div class="vorschau">
-      <img src="assets/seite-6.png" alt="Seite 6: Dein Weg im Überblick, zehn Schritte" loading="lazy" width="909" height="1286">
-      <img src="assets/seite-1.png" alt="Titelseite der Mama Money Methode" loading="lazy" width="909" height="1286">
-      <img src="assets/seite-18.png" alt="Innenseite aus dem Teil Produkt und Shop" loading="lazy" width="909" height="1286">
+    <div class="zeigen">
+      <span class="kicker">Alles, was du bekommst</span>
+      <h2>Ein Guide. <em>Und noch so viel mehr.</em></h2>
     </div>
-    <p class="vorschau-text">Echte Seiten aus dem Guide, den du bekommst.</p>
-    <div class="teile">
-      <div class="teil"><span class="nr">01</span><div><h3>Die Grundlagen</h3><p>Was digitales Marketing ist, welche Wege es gibt, dein Weg im Überblick und was dein Start wirklich kostet.</p></div></div>
-      <div class="teil"><span class="nr">02</span><div><h3>Dein Fundament</h3><p>Dein Warum, dein Einkommensziel ehrlich gerechnet, faceless oder mit Gesicht und deine eigene Marke.</p></div></div>
-      <div class="teil"><span class="nr">03</span><div><h3>Produkt &amp; Shop</h3><p>Den Guide zu deinem machen, Shop und Instagram einrichten, deine Link-in-Bio-Seite und das Rechtliche verständlich erklärt.</p></div></div>
-      <div class="teil"><span class="nr">04</span><div><h3>Sichtbarkeit &amp; Verkauf</h3><p>Deine Content-Formel, Hook- und Story-Vorlagen, dein Freebie, dein E-Mail-Tool und Vorlagen für deine Nachrichten.</p></div></div>
-      <div class="teil"><span class="nr">05</span><div><h3>Dein Launch</h3><p>Ein ehrlicher Plan, eine Checkliste vor dem Start und eine kurze Rückschau danach. Dazu ein kleines Lexikon.</p></div></div>
+    <div class="stapel">
+      <div class="posten zeigen"><div class="ic" style="background:var(--rosa)">1</div><div><b>Dein Schritt-für-Schritt-Guide</b><span>Von den Grundlagen bis zum Launch, mit einer klaren Reihenfolge, damit du nie raten musst.</span></div><span class="tag">Inklusive</span></div>
+      <div class="posten zeigen"><div class="ic" style="background:var(--lavendel)">2</div><div><b>Weiterverkaufsrechte</b><span>Anpassen, mit deinem Namen versehen und mit 100&nbsp;% des Gewinns verkaufen.</span></div><span class="tag">Inklusive</span></div>
+      <div class="posten zeigen"><div class="ic" style="background:var(--mint)">3</div><div><b>Deine eigene Verkaufsseite</b><span>Ohne Programmierkenntnisse und ohne monatliche Kosten online, Schritt für Schritt.</span></div><span class="tag">Inklusive</span></div>
+      <div class="posten zeigen"><div class="ic" style="background:var(--pfirsich)">4</div><div><b>Instagram, das verkauft</b><span>Hook-Vorlagen, die Reel-Formel, ein Faceless-Content-System, Captions und Storys.</span></div><span class="tag">Inklusive</span></div>
+      <div class="posten zeigen"><div class="ic" style="background:var(--butter)">5</div><div><b>Freebie, E-Mails und Nachrichten</b><span>Fertige Vorlagen, mit denen du Interessentinnen freundlich zum Kauf begleitest.</span></div><span class="tag">Inklusive</span></div>
+      <div class="posten top zeigen"><div class="ic" style="background:var(--rosa)">✦</div><div><b>10 professionelle Claude-Prompts</b><span>Sie schreiben mit dir dein Produkt, deine Verkaufsseite, deinen Content und dein Freebie.</span></div><span class="tag">On top</span></div>
+      <div class="posten top zeigen"><div class="ic" style="background:var(--lavendel)">✦</div><div><b>Das komplette Pinterest-Modul</b><span>Deine zweite Quelle für Käuferinnen, denn ein Pin wird oft noch nach Monaten gefunden.</span></div><span class="tag">On top</span></div>
+      <div class="posten top zeigen"><div class="ic" style="background:var(--mint)">+3</div><div><b>3 Bonus-Module</b><span>Instagram-Anzeigen schalten, Anzeigen auswerten und Zusatzverkäufe an der Kasse.</span></div><span class="tag">On top</span></div>
+    </div>
+    <p class="summe zeigen">Alles zusammen für <em>47&nbsp;€</em> einmalig.</p>
+    <a class="knopf zeigen" style="margin-top:28px" href="https://copecart.com/products/60befb55/checkout">Ja, ich will alles &rarr;</a>
+  </div>
+</section>
+
+<!-- Quiz -->
+<section class="quiz" id="quiz">
+  <div class="schmal mitte zeigen">
+    <span class="kicker">In 30 Sekunden</span>
+    <h2>Welcher Weg <em>passt zu dir?</em></h2>
+  </div>
+  <div class="quiz-karte zeigen">
+    <div class="fortschritt"><i id="balken"></i></div>
+    <div class="frage aktiv" data-f="0"><h3>Hast du schon ein Thema, über das du stundenlang reden könntest?</h3><div class="antworten"><button data-p="b">Ja, da gibt es etwas, das ich gut kann</button><button data-p="a">Nein, eher nicht</button><button data-p="a">Ich bin mir noch unsicher</button></div></div>
+    <div class="frage" data-f="1"><h3>Wie schnell möchtest du starten?</h3><div class="antworten"><button data-p="a">So bald wie möglich, am liebsten diese Woche</button><button data-p="b">Ich nehme mir gern ein paar Abende Zeit</button></div></div>
+    <div class="frage" data-f="2"><h3>Was reizt dich mehr?</h3><div class="antworten"><button data-p="a">Etwas Fertiges, das ich nur anpassen muss</button><button data-p="b">Etwas ganz Eigenes, das es so noch nicht gibt</button></div></div>
+    <div class="frage ergebnis" data-f="3">
+      <span class="kicker">Dein Ergebnis</span>
+      <span class="gross" id="erg-titel"></span>
+      <p id="erg-text"></p>
+      <a class="knopf" href="https://copecart.com/products/60befb55/checkout">Jetzt für 47&nbsp;€ starten &rarr;</a>
+      <br><button class="nochmal" id="nochmal">Noch einmal</button>
     </div>
   </div>
 </section>
 
-<!-- 6 Über mich -->
+<!-- Über mich -->
 <section class="ueber">
   <div class="wrap">
-    <img src="assets/lera.jpg" alt="Lera, die Gründerin von lera.diedigitalmama" loading="lazy" width="720" height="1280">
-    <div>
-      <p class="kicker">Von Mama zu Mama</p>
-      <h2>Hey, ich bin Lera. <em>Mama²</em> und mittendrin.</h2>
-      <p>Zwei kleine Kinder, ein voller Alltag und der Wunsch, mehr zu sein als „nur“ Mama. Ich arbeite im Mittagsschlaf, neben den Kindern, während sie spielen, und abends, wenn sie schlafen.</p>
-      <p>Bevor ich gestartet bin, habe ich viele Guides durchgetestet. Fast alle hatten eins gemeinsam: Am Ende hatte ich mehr Fragen als vorher. Ich wusste nie so recht, wie, wo und womit ich anfangen soll. Und keiner hat mir gesagt, worauf ich bei der Gewerbeanmeldung achten muss.</p>
+    <div class="foto zeigen">
+      <img src="assets/lera.jpg" alt="Lera, die Gründerin von lera.diedigitalmama" loading="lazy" width="720" height="1280">
+      <div class="zettel"><span class="hand">Hey, ich bin Lera</span>Mama² → Business mit&nbsp;Kindern</div>
+    </div>
+    <div class="zeigen">
+      <span class="kicker">Von Mama zu Mama</span>
+      <h2>Ich weiß, wie es ist, <em>nicht zu wissen, wo man anfangen soll.</em></h2>
+      <p style="margin-top:22px">Zwei kleine Kinder, ein voller Alltag und der Wunsch, mehr zu sein als „nur“ Mama. Ich arbeite abends, wenn die Kinder schlafen, und zwischendurch, während sie spielen.</p>
+      <p>Bevor ich gestartet bin, habe ich viele Guides durchgetestet. Fast alle hatten eins gemeinsam: Am Ende hatte ich mehr Fragen als vorher. Ich wusste nie so recht, wie, wo und womit ich anfangen soll.</p>
       <p>Genau deshalb habe ich die Mama Money Methode gebaut. Damit niemand im Dunkeln tappt und keine sagen muss: <b>„Davon wusste ich nichts, das hat mir keiner gesagt.“</b></p>
-      <p>Du sollst nicht Hunderte Euro für einen Kurs ausgeben müssen, nur um herauszufinden, wie du anfängst.</p>
-      <span class="hand">Deine Lera</span>
-      <a class="knopf" style="margin-top:26px" href="https://copecart.com/products/60befb55/checkout">Hol dir die Methode &rarr;</a>
+      <span class="hand" style="font-size:30px;display:block;margin-top:18px">Deine Lera</span>
+      <a class="knopf" style="margin-top:24px" href="https://copecart.com/products/60befb55/checkout">Hol dir die Methode &rarr;</a>
     </div>
   </div>
 </section>
 
-<!-- 7 Ehrlich -->
-<section class="ehrlich">
-  <div class="wrap">
-    <div class="ehrlich-kasten">
-      <div class="schmal mitte" style="width:100%">
-        <p class="kicker">Passt das zu dir?</p>
-        <h2>Für wen die Mama Money Methode <em>gemacht ist.</em></h2>
-        <p class="lead" style="margin-top:20px">Ehrlich, verständlich und ohne leere Versprechen. Schau einfach, ob du dich hier wiederfindest.</p>
-      </div>
-      <div class="fuer">
-        <div>
-          <h3>Für dich, wenn du</h3>
-          <ul class="haken">
-            <li>online starten möchtest, aber nicht weißt, womit</li>
-            <li>keine Vorerfahrung und wenig Zeit hast</li>
-            <li>nicht bei null ein eigenes Produkt entwickeln willst</li>
-            <li>etwas Ehrliches suchst, ohne Druck und ohne leere Versprechen</li>
-            <li>bereit bist, regelmäßig ein bisschen Zeit zu investieren</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Nicht für dich, wenn du</h3>
-          <ul class="nein">
-            <li>über Nacht reich werden willst</li>
-            <li>persönliche Betreuung oder ein Coaching suchst</li>
-            <li>erwartest, dass es ohne eigenes Zutun läuft</li>
-            <li>eine Rechts- oder Steuerberatung brauchst</li>
-          </ul>
-        </div>
-      </div>
+<!-- Für wen -->
+<section style="background:var(--regenbogen-hell)">
+  <div class="schmal mitte zeigen">
+    <span class="kicker">Passt das zu dir?</span>
+    <h2>Für wen die Methode <em>gemacht ist.</em></h2>
+  </div>
+  <div class="schmal">
+    <div class="fuer">
+      <div class="ja zeigen"><h3>Für dich, wenn du</h3><ul>
+        <li>online starten möchtest, aber nicht weißt, womit</li>
+        <li>keine Vorerfahrung und wenig Zeit hast</li>
+        <li>dir ein Produkt wünschst, das wirklich dir gehört</li>
+        <li>etwas Ehrliches suchst, ohne Druck und leere Versprechen</li>
+        <li>bereit bist, regelmäßig ein bisschen Zeit zu investieren</li>
+      </ul></div>
+      <div class="nein zeigen"><h3>Nicht für dich, wenn du</h3><ul>
+        <li>über Nacht reich werden willst</li>
+        <li>persönliche Betreuung oder ein Coaching suchst</li>
+        <li>erwartest, dass es ohne eigenes Zutun läuft</li>
+        <li>eine Rechts- oder Steuerberatung brauchst</li>
+      </ul></div>
     </div>
   </div>
 </section>
 
-<!-- 8 Paket -->
-<section>
-  <div class="schmal mitte">
-    <p class="kicker">Alles auf einen Blick</p>
-    <h2>Das steckt <em>drin.</em></h2>
-    <div class="paket">
-      <div><b>Fertiger PDF-Guide, 35&nbsp;Seiten</b><span>Fertig geschrieben und gestaltet, sofort als Download.</span></div>
-      <div><b>Weiterverkaufsrechte</b><span>Anpassen, mit deinem Namen versehen, 100&nbsp;% behalten.</span></div>
-      <div><b>Dein Weg in 10 Schritten</b><span>Die sinnvollste Reihenfolge, damit du nie raten musst.</span></div>
-      <div><b>Shop und Instagram einrichten</b><span>Inklusive Link-in-Bio-Seite und Bio in vier Zeilen.</span></div>
-      <div><b>Das Rechtliche verständlich</b><span>Gewerbe, Kleinunternehmerregelung und Bausteine für deine AGB.</span></div>
-      <div><b>Vorlagen zum Übernehmen</b><span>Hooks, Verkaufs-Caption, Stories, E-Mails und Nachrichten.</span></div>
-      <div><b>Freebie und E-Mail-Tool</b><span>In 7 Schritten eingerichtet, mit 5 fertigen E-Mails.</span></div>
-      <div><b>Ehrlicher Launch-Plan</b><span>Mit Checkliste, ohne künstlichen Zeitdruck.</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- 9 Preis -->
+<!-- Preis -->
 <section class="preis" id="preis">
-  <div class="schmal mitte">
-    <h2>Du musst keine Influencerin sein, <em>um online zu verkaufen.</em></h2>
-    <p class="lead" style="margin-top:20px">Starte mit einem Produkt, das schon fertig ist. Lerne Schritt für Schritt, wie du es zeigst. Und behalte jeden Verkauf für dich.</p>
-    <div class="preis-karte">
-      <div class="betrag">47&nbsp;€</div>
-      <div class="einmal">einmalig, kein Abo</div>
-      <a class="knopf" href="https://copecart.com/products/60befb55/checkout">Jetzt starten &rarr;</a>
-      <p class="klein-text">Sichere Zahlung über CopeCart. Der Guide kommt direkt nach dem Kauf als Download.</p>
-    </div>
+  <div class="schmal mitte zeigen">
+    <h2>Dein Start kostet weniger <em>als ein Abend auswärts essen.</em></h2>
+  </div>
+  <div class="preis-karte zeigen">
+    <span class="band-oben">Alles inklusive</span>
+    <div class="betrag">47&nbsp;€</div>
+    <div class="einmal">einmalig, kein Abo</div>
+    <ul>
+      <li>Der komplette Schritt-für-Schritt-Guide</li>
+      <li>Weg A und Weg B, mit Weiterverkaufsrechten</li>
+      <li>10 professionelle Claude-Prompts</li>
+      <li>Deine eigene Verkaufsseite ohne monatliche Kosten</li>
+      <li>Instagram, Pinterest, E-Mails und Launch-Plan</li>
+      <li>3 Bonus-Module on top</li>
+    </ul>
+    <a class="knopf" href="https://copecart.com/products/60befb55/checkout">Jetzt starten &rarr;</a>
+    <p class="klein-text">Sichere Zahlung über CopeCart. Der Guide kommt direkt nach dem Kauf als PDF-Download.</p>
   </div>
 </section>
 
-<!-- 10 Fragen -->
-<section class="fragen">
+<!-- Fragen -->
+<section style="padding-top:40px">
   <div class="schmal">
-    <div class="mitte"><p class="kicker">Häufige Fragen</p><h2 style="margin-bottom:28px">Was du dich <em>vielleicht fragst.</em></h2></div>
-    <details><summary>Ist das seriös?</summary><p>Du bekommst einen echten, fertigen Guide und darfst ihn verändert als dein eigenes Produkt verkaufen. Ich verspreche dir kein bestimmtes Einkommen. Im Guide steht sogar ausdrücklich, woran du unseriöse Angebote erkennst.</p></details>
-    <details><summary>Brauche ich Vorerfahrung oder Technik-Wissen?</summary><p>Nein. Jeder Schritt ist erklärt, Begriffe findest du im kleinen Lexikon am Ende. Du brauchst ein Handy oder einen Laptop und etwas Zeit, zum Beispiel im Mittagsschlaf.</p></details>
-    <details><summary>Wie viel Zeit muss ich einplanen?</summary><p>Das bestimmst du selbst. Der Guide ist so aufgebaut, dass du in kleinen Schritten vorankommst, auch mit Kindern und wenig freier Zeit.</p></details>
+    <div class="mitte zeigen"><span class="kicker">Häufige Fragen</span><h2 style="margin-bottom:26px">Was du dich <em>vielleicht fragst.</em></h2></div>
+    <details><summary>Brauche ich schon eine Produktidee?</summary><p>Nein. Bei Weg A nimmst du mein fertiges Produkt. Bei Weg B findet Claude mit dir zusammen zehn Ideen, die zu dir passen, und du prüfst die beste davon.</p></details>
+    <details><summary>Muss ich für Claude bezahlen?</summary><p>Nein. Alle Prompts funktionieren mit der kostenlosen Version von Claude. Im Guide erkläre ich dir, wie du sie einrichtest und das Beste aus ihr herausholst.</p></details>
+    <details><summary>Brauche ich Vorerfahrung oder Technik-Wissen?</summary><p>Nein. Jeder Schritt ist erklärt, auch die eigene Verkaufsseite. Begriffe findest du im Lexikon am Ende. Du brauchst ein Handy, besser noch einen Laptop, und ein paar ruhige Abende.</p></details>
+    <details><summary>Kostet mich der Start noch mehr?</summary><p>Für den Start brauchst du keine kostenpflichtigen Programme. Kosten entstehen nur, wenn du dich bewusst dafür entscheidest, zum Beispiel für eine eigene Domain oder für Anzeigen. Dein Shop-Anbieter behält pro Verkauf eine kleine Gebühr ein.</p></details>
     <details><summary>Was darf ich mit dem Guide machen?</summary><p>Du darfst ihn verändern, mit deinem Namen versehen und mit 100&nbsp;% des Gewinns weiterverkaufen, in eigene Angebote einbinden oder an deine Kundinnen verschenken. Nicht erlaubt ist, die unveränderten Weiterverkaufsrechte selbst als eigenes Produkt weiterzugeben.</p></details>
+    <details><summary>Ist das seriös?</summary><p>Du bekommst einen echten, ausführlichen Guide. Ich verspreche dir kein bestimmtes Einkommen, denn was daraus wird, hängt von deinem eigenen Einsatz ab. Dafür weißt du mit dem Guide immer, was als Nächstes zu tun ist.</p></details>
     <details><summary>Muss ich ein Gewerbe anmelden?</summary><p>Wenn du verkaufst, in der Regel ja. Im Guide erkläre ich, worauf du dabei achten solltest. Er ersetzt aber keine Rechts- oder Steuerberatung.</p></details>
-    <details><summary>Bekomme ich persönliche Betreuung?</summary><p>Nein, die Mama Money Methode ist eine Anleitung zum Selbermachen. Dafür ist sie so geschrieben, dass du immer weißt, was als Nächstes kommt.</p></details>
-    <details><summary>Wie bekomme ich den Guide?</summary><p>Du bezahlst sicher über CopeCart und bekommst den Guide direkt danach als PDF-Download.</p></details>
+    <details><summary>Bekomme ich persönliche Betreuung?</summary><p>Nein, die Mama Money Methode ist eine Anleitung zum Selbermachen. Dafür ist sie so geschrieben, dass du nie raten musst.</p></details>
   </div>
 </section>
 
-<!-- 11 Schluss -->
-<section class="schluss" style="padding-top:20px">
-  <div class="schmal">
-    <span class="hand unterstrich">Bearbeiten. Deinen Namen drauf. Verkaufen.</span>
+<!-- Schluss -->
+<section class="schluss">
+  <div class="schmal zeigen">
+    <span class="hand">Fertig nutzen. Oder selbst bauen. Und dann verkaufen.</span>
     <h2>Dein erster Schritt kann <em>heute Abend</em> sein.</h2>
     <a class="knopf" style="margin-top:30px" href="https://copecart.com/products/60befb55/checkout">Mama Money Methode für 47&nbsp;€ &rarr;</a>
   </div>
@@ -239,22 +567,120 @@
 
 <footer class="fuss">
   <div class="wrap">
-    <p><b>Hinweis zu Einkommen:</b> Ich gebe keine Garantie für ein bestimmtes Einkommen oder überhaupt für Einnahmen. Was du erreichst, hängt von deinem eigenen Einsatz, deiner Erfahrung, deiner Reichweite und dem Markt ab. Die genannten Aufrufzahlen beziehen sich auf meinen eigenen Instagram-Account und sind kein Versprechen für deine Ergebnisse.</p>
-    <p><b>Nutzungsrechte:</b> Mit dem Kauf erhältst du das Recht, die Mama Money Methode zu verändern, mit deinem eigenen Namen zu versehen und mit 100&nbsp;% des Gewinns weiterzuverkaufen. Nicht erlaubt ist, die unveränderten Weiterverkaufsrechte selbst als eigenständiges Produkt weiterzugeben oder zu verkaufen. Der Guide ersetzt keine Rechts- oder Steuerberatung.</p>
+    <p><b>Hinweis zu Einkommen:</b> Ich gebe keine Garantie für ein bestimmtes Einkommen oder überhaupt für Einnahmen. Was du erreichst, hängt von deinem eigenen Einsatz, deiner Erfahrung, deiner Reichweite und dem Markt ab. Die genannten Aufrufzahlen beziehen sich auf meinen eigenen Instagram-Account in 30 Tagen und sind kein Versprechen für deine Ergebnisse.</p>
+    <p><b>Nutzungsrechte:</b> Mit dem Kauf erhältst du das Recht, die Mama Money Methode zu verändern, mit deinem eigenen Namen zu versehen und mit 100&nbsp;% des Gewinns weiterzuverkaufen. Nicht erlaubt ist, die unveränderten Weiterverkaufsrechte selbst als eigenständiges Produkt weiterzugeben oder zu verkaufen. Der Guide ersetzt keine Rechts- oder Steuerberatung. Claude ist ein Produkt von Anthropic, ich arbeite nicht mit Anthropic zusammen.</p>
     <nav><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="https://www.instagram.com/lera.diedigitalmama/">Instagram</a></nav>
     <p style="margin-top:18px">© 2026 lera.diedigitalmama</p>
   </div>
 </footer>
 
-<div class="mobil-knopf"><a class="knopf" href="https://copecart.com/products/60befb55/checkout">Jetzt für 47&nbsp;€ starten &rarr;</a></div>
+<div class="mobil-knopf" id="mobil-knopf"><a class="knopf" href="https://copecart.com/products/60befb55/checkout">Jetzt für 47&nbsp;€ starten &rarr;</a></div>
 
 <script>
-/* kein Wort allein in der letzten Zeile: die letzten zwei Wörter hängen zusammen */
-document.querySelectorAll('h1,h2,h3,p,li,summary,.unterstrich,.zahl span,.paket span,.paket b,.zettel').forEach(function (el) {
-  var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n, last = null;
-  while ((n = w.nextNode())) { if (n.data.trim()) last = n; }
-  if (last) last.data = last.data.replace(/ (\S+\s*)$/, ' $1');
-});
+(function () {
+  var ruhig = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Auftauchen beim Scrollen */
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('da'); io.unobserve(e.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.zeigen').forEach(function (el) { io.observe(el); });
+
+  /* Zahlen hochzählen */
+  var zio = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      zio.unobserve(e.target);
+      var el = e.target, ziel = parseFloat(el.dataset.zahl), komma = el.dataset.komma ? 1 : 0, nach = el.dataset.nach || '', t0 = null;
+      function form(v) { return (komma ? v.toFixed(1).replace('.', ',') : Math.round(v)) + nach; }
+      if (ruhig) { el.innerHTML = form(ziel); return; }
+      function schritt(t) { if (!t0) t0 = t; var p = Math.min((t - t0) / 1400, 1); el.innerHTML = form(ziel * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(schritt); }
+      requestAnimationFrame(schritt);
+    });
+  }, { threshold: .5 });
+  document.querySelectorAll('[data-zahl]').forEach(function (el) { zio.observe(el); });
+
+  /* Weg A / Weg B */
+  document.querySelectorAll('.schalter button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.schalter button').forEach(function (x) { x.setAttribute('aria-selected', x === b); });
+      document.querySelectorAll('.weg-feld').forEach(function (f) { f.classList.toggle('aktiv', f.dataset.feld === b.dataset.weg); });
+    });
+  });
+
+  /* Prompt tippen */
+  var prompt = 'Du bist eine erfahrene Strategin für digitale Einsteigerprodukte im deutschsprachigen Raum. Hilf mir, die richtige Idee für mein erstes digitales Produkt zu finden, das ich für 17 bis 47 € verkaufen kann.\n\nStell mir zuerst nacheinander diese Fragen und warte jeweils auf meine Antwort:\n1. Was ist mein Beruf oder meine größte Fähigkeit?\n2. Welches Problem habe ich in meinem eigenen Leben schon gelöst?\n3. Wobei fragen mich andere immer wieder um Rat?\n4. Über welche zwei bis drei Themen könnte ich eine Stunde reden, ohne nachzudenken?\n5. Wen möchte ich mit meinem Produkt erreichen?\n\nWenn du alle Antworten hast, gib mir 10 Produktideen. Für jede Idee:\n– ein klarer Arbeitstitel\n– das Format\n– wer genau sie kauft\n– das eine Problem, das sie löst\n– ein Satz, warum jemand sie noch heute Abend kaufen würde …';
+  var pre = document.getElementById('tipp');
+  if (ruhig) { pre.textContent = prompt; }
+  else {
+    var tio = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return; tio.disconnect();
+      var i = 0, cur = document.createElement('span'); cur.className = 'cursor';
+      var txt = document.createTextNode(''); pre.appendChild(txt); pre.appendChild(cur);
+      (function tipp() { i += 3; txt.data = prompt.slice(0, i); if (i < prompt.length) setTimeout(tipp, 18); })();
+    }, { threshold: .35 });
+    tio.observe(pre);
+  }
+
+  /* Blick hinein */
+  var teile = [
+    { name: 'Dein Fahrplan', bilder: ['mmm-weg', 'mmm-inhalt'], titel: 'Du weißt immer, <em>was als Nächstes kommt.</em>', text: 'Dein Weg in einer klaren Reihenfolge, von den Grundlagen über dein Warum bis zum Launch.', punkte: ['Was digitales Marketing wirklich ist', 'Was dein Start kostet, ehrlich gerechnet', 'Dein Einkommensziel und dein Warum', 'Faceless oder mit Gesicht, ganz wie du magst'] },
+    { name: 'Dein Produkt', bilder: ['mmm-prompt', 'mmm-geschafft'], titel: 'Fertig übernommen <em>oder selbst gebaut.</em>', text: 'Weg A in sechs Schritten oder Weg B mit Claude, von der Idee bis zum fertigen PDF.', punkte: ['Produktidee, Preis und Gliederung mit Claude', 'Der Inhalt Kapitel für Kapitel, in deiner Stimme', 'In Canva gestalten und als PDF speichern', 'Was du bei Bildern beachten musst'] },
+    { name: 'Verkaufsseite', bilder: ['mmm-github', 'mmm-cover'], titel: 'Deine eigene Seite, <em>ohne monatliche Kosten.</em>', text: 'Claude schreibt mit dir deine Verkaufsseite und baut sie als fertige Webseite, die du kostenlos online stellst.', punkte: ['Dein Shop Schritt für Schritt eingerichtet', 'Die neun Bausteine einer guten Verkaufsseite', 'Online stellen ohne Programmierkenntnisse', 'Eine eigene Domain, wenn du so weit bist'] },
+    { name: 'Instagram', bilder: ['mmm-reel', 'mmm-faceless'], titel: 'Content, der <em>Menschen anzieht.</em>', text: 'Von deinem Profil bis zum Verkaufs-Reel, mit Vorlagen und einem System, auch ganz ohne Gesicht.', punkte: ['Profil, Bio und Link-in-Bio-Seite', '12 Hook-Vorlagen und die Reel-Formel', 'Ein Faceless-System mit 15 Ideen und 7-Tage-Plan', 'Captions, Story-Vorlagen und dein Stichwort'] },
+    { name: 'Pinterest', bilder: ['mmm-pinterest', 'mmm-reel'], titel: 'Deine zweite Quelle <em>für Käuferinnen.</em>', text: 'Ein Pin wird oft noch nach Monaten gefunden, während ein Beitrag auf Instagram nach ein paar Tagen weg ist.', punkte: ['Dein Unternehmenskonto und deine Pinnwände', 'Die richtigen Suchbegriffe finden', 'Pins gestalten, die geklickt werden', 'Deine Pin-Routine und deine Auswertung'] },
+    { name: 'Bonus-Module', bilder: ['mmm-anzeigen', 'mmm-pinterest'], titel: 'On top für alle, <em>die mehr wollen.</em>', text: 'Kein Muss für den Start, aber eine vollständige Anleitung, wenn du so weit bist.', punkte: ['Instagram-Anzeigen Schritt für Schritt schalten', 'Anzeigen auswerten mit allen wichtigen Zahlen', 'Order Bump und Upsell für mehr Umsatz pro Kauf', 'Dazu deine Prompt-Bibliothek und ein Lexikon'] }
+  ];
+  var reiter = document.getElementById('reiter'), vorn = document.getElementById('bild-vorn'), hinten = document.getElementById('bild-hinten'), feld = document.getElementById('buehne-text');
+  function zeige(n) {
+    var t = teile[n];
+    reiter.querySelectorAll('button').forEach(function (b, i) { b.setAttribute('aria-selected', i === n); });
+    feld.classList.add('weg');
+    setTimeout(function () {
+      vorn.src = 'assets/' + t.bilder[0] + '.webp'; vorn.alt = 'Seite aus dem Teil ' + t.name;
+      hinten.src = 'assets/' + t.bilder[1] + '.webp';
+      feld.innerHTML = '<span class="nr">0' + (n + 1) + '</span><h3 style="margin-top:6px">' + t.titel + '</h3><p style="margin-top:14px">' + t.text + '</p><ul>' + t.punkte.map(function (p) { return '<li>' + p + '</li>'; }).join('') + '</ul>';
+      feld.classList.remove('weg');
+    }, 220);
+  }
+  teile.forEach(function (t, i) {
+    var b = document.createElement('button'); b.setAttribute('role', 'tab'); b.textContent = t.name;
+    b.addEventListener('click', function () { zeige(i); }); reiter.appendChild(b);
+  });
+  zeige(0);
+
+  /* Quiz */
+  var punkte = { a: 0, b: 0 }, schritt = 0, balken = document.getElementById('balken');
+  function frage(n) {
+    document.querySelectorAll('.frage').forEach(function (f) { f.classList.toggle('aktiv', +f.dataset.f === n); });
+    balken.style.width = (n / 3 * 100) + '%';
+  }
+  document.querySelectorAll('.antworten button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      punkte[b.dataset.p]++; schritt++;
+      if (schritt === 3) {
+        var a = punkte.a >= punkte.b;
+        document.getElementById('erg-titel').textContent = a ? 'Weg A: fertig nutzen' : 'Weg B: selbst bauen';
+        document.getElementById('erg-text').textContent = a
+          ? 'Du willst schnell starten und dir die Entwicklung sparen. Du nimmst meinen fertigen Guide, machst ihn zu deinem und konzentrierst dich direkt aufs Verkaufen.'
+          : 'Du hast etwas Eigenes in dir. Mit den 10 Prompts baust du mit Claude Schritt für Schritt dein ganz eigenes Produkt, und danach zeigt dir der Guide, wie du es verkaufst.';
+      }
+      frage(schritt);
+    });
+  });
+  document.getElementById('nochmal').addEventListener('click', function () { punkte = { a: 0, b: 0 }; schritt = 0; frage(0); });
+
+  /* Knopf unten am Handy erst nach dem ersten Bildschirm */
+  var mk = document.getElementById('mobil-knopf');
+  window.addEventListener('scroll', function () { mk.classList.toggle('da', window.scrollY > 600); }, { passive: true });
+
+  /* kein Wort allein in der letzten Zeile */
+  document.querySelectorAll('h1,h2,h3,p,li,summary,.hand,.zahlen span,.posten span,.posten b').forEach(function (el) {
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n, last = null;
+    while ((n = w.nextNode())) { if (n.data.trim()) last = n; }
+    if (last) last.data = last.data.replace(/ (\S+\s*)$/, ' $1');
+  });
+})();
 </script>
 <script data-goatcounter="https://lera.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
