@@ -75,8 +75,8 @@ b, strong { font-weight: 500; color: var(--dunkel); }
 .held .knopf { margin-top: 34px; }
 .held-bild { position: relative; height: 620px; }
 .held-bild .seite { position: absolute; width: 330px; border-radius: 10px; box-shadow: var(--schatten); background: #fff; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
-.held-bild .s1 { left: 4%; top: 70px; transform: rotate(-9deg); filter: blur(2.5px); }
-.held-bild .s2 { right: 0; top: 40px; transform: rotate(8deg); filter: blur(2.5px); }
+.held-bild .s1 { left: 4%; top: 70px; transform: rotate(-9deg); }
+.held-bild .s2 { right: 0; top: 40px; transform: rotate(8deg); }
 .held-bild .s3 { left: 50%; top: 0; width: 370px; transform: translateX(-50%); z-index: 2; }
 .held-bild:hover .s1 { transform: rotate(-13deg) translateX(-24px); }
 .held-bild:hover .s2 { transform: rotate(12deg) translateX(24px); }
@@ -120,7 +120,8 @@ b, strong { font-weight: 500; color: var(--dunkel); }
 @keyframes auf { from { opacity: 0; transform: translateY(14px); } }
 .weg-bild { position: relative; justify-self: center; width: 100%; max-width: 380px; }
 .weg-bild .schloss { right: -10px; bottom: 40px; }
-.weg-feld img { filter: blur(3px); width: 100%; max-width: 380px; justify-self: center; border-radius: 12px; box-shadow: var(--schatten); transform: rotate(-2deg); }
+.weg-feld img.ausblenden { filter: blur(.9px); -webkit-mask-image: linear-gradient(180deg, #000 40%, transparent 78%); mask-image: linear-gradient(180deg, #000 40%, transparent 78%); box-shadow: none; }
+.weg-feld img { width: 100%; max-width: 380px; justify-self: center; border-radius: 12px; box-shadow: var(--schatten); transform: rotate(-2deg); }
 .weg-feld h3 { margin-bottom: 14px; }
 .schritte { list-style: none; counter-reset: s; margin-top: 22px; display: grid; gap: 14px; }
 .schritte li { counter-increment: s; display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; font-size: 17px; }
@@ -158,8 +159,10 @@ b, strong { font-weight: 500; color: var(--dunkel); }
 .buehne .bild { position: relative; height: 560px; }
 .buehne .bild img { position: absolute; width: 380px; left: 50%; top: 0; border-radius: 10px; box-shadow: var(--schatten); transition: opacity .45s, transform .6s cubic-bezier(.2,.8,.2,1); }
 .buehne .bild img.hinten { transform: translateX(-30%) rotate(7deg) scale(.92); opacity: .55; }
-.buehne .bild img { filter: blur(3.5px); }
-.buehne .bild .schloss { left: 50%; bottom: 60px; transform: translateX(-50%); }
+.buehne .bild img { filter: blur(.7px); -webkit-mask-image: linear-gradient(180deg, #000 38%, transparent 72%); mask-image: linear-gradient(180deg, #000 38%, transparent 72%); }
+.buehne .bild img.vorn { box-shadow: none; filter: blur(.7px) drop-shadow(0 24px 30px rgba(62,47,74,.18)); }
+.buehne .bild img.hinten { box-shadow: none; filter: blur(2px); }
+.buehne .bild .schloss { left: 50%; top: 330px; bottom: auto; transform: translateX(-50%); }
 .buehne .bild img.vorn { transform: translateX(-62%) rotate(-3deg); z-index: 2; }
 .buehne .text { transition: opacity .3s; }
 .buehne .text.weg { opacity: 0; }
@@ -268,6 +271,7 @@ details p { margin-top: 12px; font-size: 17px; }
   .wunsch-liste { grid-template-columns: 1fr 1fr; }
   .buehne .bild { height: 430px; order: -1; }
   .buehne .bild img { width: 270px; }
+  .buehne .bild .schloss { top: 230px; }
   .foto { max-width: 380px; margin: 0 auto; }
   .foto .zettel { right: 0; }
   .fuer { grid-template-columns: 1fr; }
@@ -370,7 +374,7 @@ details p { margin-top: 12px; font-size: 17px; }
   </div>
   <div class="wrap">
     <div class="weg-feld a aktiv" data-feld="a">
-      <div class="weg-bild"><img src="assets/mmm-zweiwege.webp" alt="Verschwommene Seite aus dem Guide" loading="lazy" width="909" height="1287"><span class="schloss">🔒 alle Schritte im Guide</span></div>
+      <div class="weg-bild"><img src="assets/mmm-cover.webp" alt="Titelseite der Mama Money Methode" loading="lazy" width="909" height="1287"></div>
       <div>
         <span class="kicker">Weg A</span>
         <h3>Du nimmst mein fertiges Produkt und machst es <em>zu deinem.</em></h3>
@@ -385,7 +389,7 @@ details p { margin-top: 12px; font-size: 17px; }
       </div>
     </div>
     <div class="weg-feld b" data-feld="b">
-      <div class="weg-bild"><img src="assets/mmm-prompt.webp" alt="Verschwommene Seite aus dem Guide" loading="lazy" width="909" height="1287"><span class="schloss">🔒 alle Prompts im Guide</span></div>
+      <div class="weg-bild"><img class="ausblenden" src="assets/mmm-prompt.webp" alt="Anfang einer Seite mit Prompt 1 aus dem Guide" loading="lazy" width="909" height="1287"><span class="schloss" style="top:52%;bottom:auto;right:auto;left:50%;transform:translateX(-50%)">🔒 alle 10 Prompts im Guide</span></div>
       <div>
         <span class="kicker">Weg B</span>
         <h3>Du baust mit Claude dein <em>ganz eigenes</em> Produkt.</h3>
@@ -637,11 +641,11 @@ details p { margin-top: 12px; font-size: 17px; }
   /* Blick hinein */
   var teile = [
     { name: 'Dein Fahrplan', bilder: ['mmm-weg', 'mmm-inhalt'], titel: 'Du weißt immer, <em>was als Nächstes kommt.</em>', text: 'Dein Weg in einer klaren Reihenfolge, von den Grundlagen über dein Warum bis zum Launch.', punkte: ['Was digitales Marketing wirklich ist', 'Was dein Start kostet, ehrlich gerechnet', 'Dein Einkommensziel und dein Warum', 'Faceless oder mit Gesicht, ganz wie du magst'] },
-    { name: 'Dein Produkt', bilder: ['mmm-prompt', 'mmm-geschafft'], titel: 'Fertig übernommen <em>oder selbst gebaut.</em>', text: 'Weg A in sechs Schritten oder Weg B mit Claude, von der Idee bis zum fertigen PDF.', punkte: ['Produktidee, Preis und Gliederung mit Claude', 'Der Inhalt Kapitel für Kapitel, in deiner Stimme', 'In Canva gestalten und als PDF speichern', 'Was du bei Bildern beachten musst'] },
+    { name: 'Dein Produkt', bilder: ['mmm-geschafft', 'mmm-prompt'], titel: 'Fertig übernommen <em>oder selbst gebaut.</em>', text: 'Weg A in sechs Schritten oder Weg B mit Claude, von der Idee bis zum fertigen PDF.', punkte: ['Produktidee, Preis und Gliederung mit Claude', 'Der Inhalt Kapitel für Kapitel, in deiner Stimme', 'In Canva gestalten und als PDF speichern', 'Was du bei Bildern beachten musst'] },
     { name: 'Verkaufsseite', bilder: ['mmm-github', 'mmm-cover'], titel: 'Deine eigene Seite, <em>ohne monatliche Kosten.</em>', text: 'Claude schreibt mit dir deine Verkaufsseite und baut sie als fertige Webseite, die du kostenlos online stellst.', punkte: ['Dein Shop Schritt für Schritt eingerichtet', 'Die neun Bausteine einer guten Verkaufsseite', 'Online stellen ohne Programmierkenntnisse', 'Eine eigene Domain, wenn du so weit bist'] },
-    { name: 'Instagram', bilder: ['mmm-reel', 'mmm-faceless'], titel: 'Content, der <em>Menschen anzieht.</em>', text: 'Von deinem Profil bis zum Verkaufs-Reel, mit Vorlagen und einem System, auch ganz ohne Gesicht.', punkte: ['Profil, Bio und Link-in-Bio-Seite', '12 Hook-Vorlagen und die Reel-Formel', 'Ein Faceless-System mit 15 Ideen und 7-Tage-Plan', 'Captions, Story-Vorlagen und dein Stichwort'] },
+    { name: 'Instagram', bilder: ['mmm-faceless', 'mmm-reel'], titel: 'Content, der <em>Menschen anzieht.</em>', text: 'Von deinem Profil bis zum Verkaufs-Reel, mit Vorlagen und einem System, auch ganz ohne Gesicht.', punkte: ['Profil, Bio und Link-in-Bio-Seite', '12 Hook-Vorlagen und die Reel-Formel', 'Ein Faceless-System mit 15 Ideen und 7-Tage-Plan', 'Captions, Story-Vorlagen und dein Stichwort'] },
     { name: 'Pinterest', bilder: ['mmm-pinterest', 'mmm-reel'], titel: 'Deine zweite Quelle <em>für Käuferinnen.</em>', text: 'Ein Pin wird oft noch nach Monaten gefunden, während ein Beitrag auf Instagram nach ein paar Tagen weg ist.', punkte: ['Dein Unternehmenskonto und deine Pinnwände', 'Die richtigen Suchbegriffe finden', 'Pins gestalten, die geklickt werden', 'Deine Pin-Routine und deine Auswertung'] },
-    { name: 'Bonus-Module', bilder: ['mmm-anzeigen', 'mmm-pinterest'], titel: 'On top für alle, <em>die mehr wollen.</em>', text: 'Kein Muss für den Start, aber eine vollständige Anleitung, wenn du so weit bist.', punkte: ['Instagram-Anzeigen Schritt für Schritt schalten', 'Anzeigen auswerten mit allen wichtigen Zahlen', 'Order Bump und Upsell für mehr Umsatz pro Kauf', 'Dazu deine Prompt-Bibliothek und ein Lexikon'] }
+    { name: 'Bonus-Module', bilder: ['mmm-cover', 'mmm-anzeigen'], titel: 'On top für alle, <em>die mehr wollen.</em>', text: 'Kein Muss für den Start, aber eine vollständige Anleitung, wenn du so weit bist.', punkte: ['Instagram-Anzeigen Schritt für Schritt schalten', 'Anzeigen auswerten mit allen wichtigen Zahlen', 'Order Bump und Upsell für mehr Umsatz pro Kauf', 'Dazu deine Prompt-Bibliothek und ein Lexikon'] }
   ];
   var reiter = document.getElementById('reiter'), vorn = document.getElementById('bild-vorn'), hinten = document.getElementById('bild-hinten'), feld = document.getElementById('buehne-text');
   function zeige(n) {
