@@ -75,8 +75,8 @@ b, strong { font-weight: 500; color: var(--dunkel); }
 .held .knopf { margin-top: 34px; }
 .held-bild { position: relative; height: 620px; }
 .held-bild .seite { position: absolute; width: 330px; border-radius: 10px; box-shadow: var(--schatten); background: #fff; transition: transform .6s cubic-bezier(.2,.8,.2,1); }
-.held-bild .s1 { left: 4%; top: 70px; transform: rotate(-9deg); }
-.held-bild .s2 { right: 0; top: 40px; transform: rotate(8deg); }
+.held-bild .s1 { left: 4%; top: 70px; transform: rotate(-9deg); filter: blur(2.5px); }
+.held-bild .s2 { right: 0; top: 40px; transform: rotate(8deg); filter: blur(2.5px); }
 .held-bild .s3 { left: 50%; top: 0; width: 370px; transform: translateX(-50%); z-index: 2; }
 .held-bild:hover .s1 { transform: rotate(-13deg) translateX(-24px); }
 .held-bild:hover .s2 { transform: rotate(12deg) translateX(24px); }
@@ -118,7 +118,9 @@ b, strong { font-weight: 500; color: var(--dunkel); }
 .weg-feld { display: none; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 52px; text-align: left; }
 .weg-feld.aktiv { display: grid; animation: auf .5s ease; }
 @keyframes auf { from { opacity: 0; transform: translateY(14px); } }
-.weg-feld img { width: 100%; max-width: 380px; justify-self: center; border-radius: 12px; box-shadow: var(--schatten); transform: rotate(-2deg); }
+.weg-bild { position: relative; justify-self: center; width: 100%; max-width: 380px; }
+.weg-bild .schloss { right: -10px; bottom: 40px; }
+.weg-feld img { filter: blur(3px); width: 100%; max-width: 380px; justify-self: center; border-radius: 12px; box-shadow: var(--schatten); transform: rotate(-2deg); }
 .weg-feld h3 { margin-bottom: 14px; }
 .schritte { list-style: none; counter-reset: s; margin-top: 22px; display: grid; gap: 14px; }
 .schritte li { counter-increment: s; display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; font-size: 17px; }
@@ -133,6 +135,12 @@ b, strong { font-weight: 500; color: var(--dunkel); }
 .terminal .leiste { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,.12); font: 500 12px/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; color: #F6C9DA; }
 .terminal .leiste i { font: 600 21px var(--hand); letter-spacing: 0; text-transform: none; color: #fff; font-style: normal; }
 .terminal pre { margin: 0; padding: 24px 24px 30px; min-height: 420px; font: 400 14.5px/1.62 var(--sans); color: #F4EEF7; white-space: pre-wrap; }
+.terminal pre.kurz { min-height: 0; padding-bottom: 6px; }
+.verdeckt { position: relative; padding: 0 24px 30px; }
+.verdeckt p { font: 400 14.5px/1.62 var(--sans); color: #F4EEF7; filter: blur(5px); user-select: none; }
+.schloss-karte { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: #fff; color: var(--dunkel); border-radius: 18px; padding: 18px 22px; text-align: center; box-shadow: var(--schatten); width: min(340px, 86%); font-size: 15.5px; line-height: 1.45; }
+.schloss-karte b { display: block; font: 600 21px/1.2 var(--serif); margin-bottom: 4px; }
+.schloss { position: absolute; z-index: 3; background: var(--dunkel); color: #fff; border-radius: 999px; padding: 11px 20px; font: 500 14px/1 var(--sans); letter-spacing: .06em; box-shadow: 0 12px 26px -10px rgba(62,47,74,.6); white-space: nowrap; }
 .terminal pre .cursor { display: inline-block; width: 9px; height: 18px; background: #F6C9DA; vertical-align: -3px; animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 .hinweis-klein { font-size: 14px; color: var(--text-2); margin-top: 14px; }
@@ -150,6 +158,8 @@ b, strong { font-weight: 500; color: var(--dunkel); }
 .buehne .bild { position: relative; height: 560px; }
 .buehne .bild img { position: absolute; width: 380px; left: 50%; top: 0; border-radius: 10px; box-shadow: var(--schatten); transition: opacity .45s, transform .6s cubic-bezier(.2,.8,.2,1); }
 .buehne .bild img.hinten { transform: translateX(-30%) rotate(7deg) scale(.92); opacity: .55; }
+.buehne .bild img { filter: blur(3.5px); }
+.buehne .bild .schloss { left: 50%; bottom: 60px; transform: translateX(-50%); }
 .buehne .bild img.vorn { transform: translateX(-62%) rotate(-3deg); z-index: 2; }
 .buehne .text { transition: opacity .3s; }
 .buehne .text.weg { opacity: 0; }
@@ -360,7 +370,7 @@ details p { margin-top: 12px; font-size: 17px; }
   </div>
   <div class="wrap">
     <div class="weg-feld a aktiv" data-feld="a">
-      <img src="assets/mmm-zweiwege.webp" alt="Seite: Zwei Wege, ein Ziel" loading="lazy" width="909" height="1287">
+      <div class="weg-bild"><img src="assets/mmm-zweiwege.webp" alt="Verschwommene Seite aus dem Guide" loading="lazy" width="909" height="1287"><span class="schloss">🔒 alle Schritte im Guide</span></div>
       <div>
         <span class="kicker">Weg A</span>
         <h3>Du nimmst mein fertiges Produkt und machst es <em>zu deinem.</em></h3>
@@ -375,7 +385,7 @@ details p { margin-top: 12px; font-size: 17px; }
       </div>
     </div>
     <div class="weg-feld b" data-feld="b">
-      <img src="assets/mmm-prompt.webp" alt="Seite: Prompt 1, deine Produktidee" loading="lazy" width="909" height="1287">
+      <div class="weg-bild"><img src="assets/mmm-prompt.webp" alt="Verschwommene Seite aus dem Guide" loading="lazy" width="909" height="1287"><span class="schloss">🔒 alle Prompts im Guide</span></div>
       <div>
         <span class="kicker">Weg B</span>
         <h3>Du baust mit Claude dein <em>ganz eigenes</em> Produkt.</h3>
@@ -405,11 +415,13 @@ details p { margin-top: 12px; font-size: 17px; }
         <li>Einfach kopieren, einfügen und deine Antworten ergänzen</li>
         <li>Funktioniert mit der <b>kostenlosen</b> Version von Claude</li>
       </ul>
-      <p class="hinweis-klein">Rechts siehst du den echten Prompt 1 aus dem Guide.</p>
+      <p class="hinweis-klein">Hier siehst du den Anfang von Prompt 1 aus dem Guide.</p>
     </div>
     <div class="terminal zeigen">
       <div class="leiste"><span>In Claude einfügen · Prompt 1</span><i>Produktidee finden</i></div>
-      <pre id="tipp" aria-label="Prompt 1 aus dem Guide"></pre>
+      <pre id="tipp" class="kurz" aria-label="Anfang von Prompt 1 aus dem Guide"></pre>
+      <div class="verdeckt" aria-hidden="true"><p>Xxxxxx xxxx xxxxxx xxx xxxxxxx xxxxx xxxxxxx xxx xxxxx xxx xxxxxx xxxxxxx.<br>3. Xxxxx xxxxxx xxxx xxxxxx xxxxx xxx Xxx?<br>4. Xxxx xxxxxx xxxx xxx xxxx Xxxxxx xxxxxx xxx xxxx xxxxxx?<br>5. Xxx xxxxxx xxx xxx xxxxxx Xxxxxxx xxxxxxx?<br><br>Xxxx xx xxxx Xxxxxxxxx xxxx, xxx xxx 10 Xxxxxxxxxxxx. Xxx xxxx Xxxx:<br>– xxx xxxxxx Xxxxxxxxxxx<br>– xxx Xxxxxx xxx xxx xxxxx<br>– xxx xxxxxx xxx xxxxx xxxxx xxx xxxx Xxxxxx</p>
+        <div class="schloss-karte"><b>🔒 Der Rest bleibt im Guide</b>Den kompletten Prompt und 9 weitere bekommst du direkt nach dem Kauf.</div></div>
     </div>
   </div>
 </section>
@@ -418,13 +430,13 @@ details p { margin-top: 12px; font-size: 17px; }
 <section class="blick" id="inhalt">
   <div class="schmal mitte zeigen">
     <span class="kicker">Ein Blick hinein</span>
-    <h2>Echte Seiten. <em>Alles bis ins Detail erklärt.</em></h2>
+    <h2>Was dich erwartet, <em>alles bis ins Detail erklärt.</em></h2>
     <p class="lead" style="margin-top:20px">Tipp dich durch die Teile des Guides und sieh dir an, was dich erwartet.</p>
   </div>
   <div class="wrap">
     <div class="reiter" role="tablist" id="reiter"></div>
     <div class="buehne">
-      <div class="bild"><img class="hinten" id="bild-hinten" alt="" loading="lazy" width="909" height="1287"><img class="vorn" id="bild-vorn" alt="" loading="lazy" width="909" height="1287"></div>
+      <div class="bild"><img class="hinten" id="bild-hinten" alt="" loading="lazy" width="909" height="1287"><img class="vorn" id="bild-vorn" alt="" loading="lazy" width="909" height="1287"><span class="schloss">🔒 der ganze Inhalt im Guide</span></div>
       <div class="text" id="buehne-text"></div>
     </div>
   </div>
@@ -609,7 +621,7 @@ details p { margin-top: 12px; font-size: 17px; }
   });
 
   /* Prompt tippen */
-  var prompt = 'Du bist eine erfahrene Strategin für digitale Einsteigerprodukte im deutschsprachigen Raum. Hilf mir, die richtige Idee für mein erstes digitales Produkt zu finden, das ich für 17 bis 47 € verkaufen kann.\n\nStell mir zuerst nacheinander diese Fragen und warte jeweils auf meine Antwort:\n1. Was ist mein Beruf oder meine größte Fähigkeit?\n2. Welches Problem habe ich in meinem eigenen Leben schon gelöst?\n3. Wobei fragen mich andere immer wieder um Rat?\n4. Über welche zwei bis drei Themen könnte ich eine Stunde reden, ohne nachzudenken?\n5. Wen möchte ich mit meinem Produkt erreichen?\n\nWenn du alle Antworten hast, gib mir 10 Produktideen. Für jede Idee:\n– ein klarer Arbeitstitel\n– das Format\n– wer genau sie kauft\n– das eine Problem, das sie löst\n– ein Satz, warum jemand sie noch heute Abend kaufen würde …';
+  var prompt = 'Du bist eine erfahrene Strategin für digitale Einsteigerprodukte im deutschsprachigen Raum. Hilf mir, die richtige Idee für mein erstes digitales Produkt zu finden …\n\nStell mir zuerst nacheinander diese Fragen und warte jeweils auf meine Antwort:\n1. Was ist mein Beruf oder meine größte Fähigkeit?\n2. Welches Problem habe ich in meinem eigenen Leben schon gelöst?';
   var pre = document.getElementById('tipp');
   if (ruhig) { pre.textContent = prompt; }
   else {
